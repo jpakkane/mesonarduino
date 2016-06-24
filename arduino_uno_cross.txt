@@ -33,6 +33,9 @@ cpp_args = ['-I/usr/share/arduino/hardware/arduino/variants/standard',
   '-D__PROG_TYPES_COMPAT__',
   ]
 
+c_link_args = ['-Os', '-Wl,--gc-sections', '-mmcu=atmega328p']
+cpp_link_args = ['-Os', '-Wl,--gc-sections', '-mmcu=atmega328p']
+
 [host_machine]
 system = 'bare'
 cpu_family = 'atmega'

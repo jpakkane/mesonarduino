@@ -38,6 +38,7 @@ ardulib = static_library('ardulib',
   ardu_src)
 
 exe = executable('blink', 'blink.cpp',
+  link_args : '-lm',
   link_with : ardulib)
 
 objcopy = find_program('avr-objcopy')
