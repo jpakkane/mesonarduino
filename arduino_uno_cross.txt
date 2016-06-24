@@ -1,0 +1,40 @@
+[binaries]
+c = '/usr/bin/avr-gcc'
+cpp = '/usr/bin/avr-g++'
+ar = '/usr/bin/avr-ar'
+strip = '/usr/bin/avr-strip'
+
+[properties]
+root = '/usr/share/arduino'
+
+c_args = [
+  '-I/usr/share/arduino/hardware/arduino/variants/standard',
+  '-I/usr/share/arduino/hardware/arduino/cores/arduino',
+  '-ffunction-sections',
+  '-fdata-sections',
+  '-mmcu=atmega328p',
+  '-DF_CPU=16000000L',
+  '-DUSB_VID=null',
+  '-DUSB_PID=null',
+  '-DARDUINO=105',
+  '-D__PROG_TYPES_COMPAT__',
+  ]
+
+cpp_args = ['-I/usr/share/arduino/hardware/arduino/variants/standard',
+  '-I/usr/share/arduino/hardware/arduino/cores/arduino',
+  '-fno-exceptions',
+  '-ffunction-sections',
+  '-fdata-sections',
+  '-mmcu=atmega328p',
+  '-DF_CPU=16000000L',
+  '-DUSB_VID=null',
+  '-DUSB_PID=null',
+  '-DARDUINO=105',
+  '-D__PROG_TYPES_COMPAT__',
+  ]
+
+[host_machine]
+system = 'bare'
+cpu_family = 'atmega'
+cpu = 'atmega328P'
+endian = 'none'
