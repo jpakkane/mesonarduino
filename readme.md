@@ -12,6 +12,9 @@ The result can be uploaded with the following command:
 
     ninja ardup
 
+This command will rebuild the binary before uploading if it is out of
+date.
+
 # Porting to other Arduino models
 
 This project hardcodes Arduino Uno. If you have a different model,
