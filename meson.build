@@ -66,5 +66,6 @@ run_target('ardup', avrdude,
   '-C/usr/share/arduino/hardware/tools/avrdude.conf',
   '-v', '-v', '-v', '-v',
   '-patmega328p', '-carduino', '-P/dev/ttyACM0', '-b115200',
-  '-D', '-Uflash:w:/home/jpakkane/ardutest/build/blink.hex:i',
+  '-D', '-Uflash:w:@0@:i'.format(hex.full_path()),
+  depends : hex,
 )
