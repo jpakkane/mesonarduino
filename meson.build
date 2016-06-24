@@ -63,10 +63,11 @@ hex = custom_target('blink.hex',
   depends : eep,
 )
 
-run_target('ardup', avrdude,
+run_target('ardup',
+  command : [avrdude,
   '-C/usr/share/arduino/hardware/tools/avrdude.conf',
   '-v', '-v', '-v', '-v',
   '-patmega328p', '-carduino', '-P/dev/ttyACM0', '-b115200',
-  '-D', '-Uflash:w:@0@:i'.format(hex.full_path()),
+  '-D', '-Uflash:w:@0@:i'.format(hex.full_path())],
   depends : hex,
 )
