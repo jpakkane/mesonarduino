@@ -4,35 +4,7 @@ project('arduino blink', 'c', 'cpp',
 
 assert(meson.is_cross_build(), 'Arduino projects can only be built in a cross build environment.')
 
-ardu_src_dir = '/usr/share/arduino/hardware/arduino/cores/arduino/'
-
-ardu_lib_files = [
-  'wiring_shift.c',
-  'wiring_analog.c',
-  'WInterrupts.c',
-  'avr-libc/realloc.c',
-  'avr-libc/malloc.c',
-  'wiring_digital.c',
-  'wiring_pulse.c',
-  'wiring.c',
-  'HID.cpp',
-  'new.cpp',
-  'Tone.cpp',
-  'main.cpp',
-  'WString.cpp',
-  'CDC.cpp',
-  'HardwareSerial.cpp',
-  'IPAddress.cpp',
-  'Print.cpp',
-  'WMath.cpp',
-  'Stream.cpp',
-  'USBCore.cpp'
-]
-
-ardu_src = []
-foreach f : ardu_lib_files
-  ardu_src += ardu_src_dir + f
-endforeach
+ardu_src = meson.get_cross_property('ardu_src')
 
 ardulib = static_library('ardulib',
   ardu_src)
