@@ -1,17 +1,16 @@
 project('arduino blink', 'c', 'cpp',
-  default_options : ['buildtype=minsize'],
+  default_options : ['buildtype=minsize',
+                     'b_lto=true',
+                     ],
   )
 
 assert(meson.is_cross_build(), 'Arduino projects can only be built in a cross build environment.')
 
 ardu_src = meson.get_cross_property('ardu_src')
 
-ardulib = static_library('ardulib',
-  ardu_src)
-
 exe = executable('blink', 'blink.cpp',
-  link_args : '-lm',
-  link_with : ardulib)
+  ardu_src,
+  link_args : '-lm')
 
 objcopy = find_program('avr-objcopy')
 avrdude = find_program('avrdude')
