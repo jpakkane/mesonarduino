@@ -8,8 +8,10 @@ assert(meson.is_cross_build(), 'Arduino projects can only be built in a cross bu
 
 ardu_src = meson.get_cross_property('ardu_src')
 
+ardulib = static_library('ardu', ardu_src)
+
 exe = executable('blink', 'blink.cpp',
-  ardu_src,
+  link_with : ardulib,
   link_args : '-lm')
 
 objcopy = find_program('avr-objcopy')
