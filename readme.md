@@ -10,7 +10,7 @@ Arduino. Compile it with the following commands.
 
 The result can be uploaded with the following command:
 
-    ninja ardup
+    ninja upload
 
 This command will rebuild the binary before uploading if it is out of
 date.

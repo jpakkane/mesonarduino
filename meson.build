@@ -45,7 +45,7 @@ hex = custom_target('blink.hex',
   depends : eep,
 )
 
-run_target('ardup',
+run_target('upload',
   command : [avrdude,
   '-C/usr/share/arduino/hardware/tools/avrdude.conf',
   '-v', '-v', '-v', '-v',
