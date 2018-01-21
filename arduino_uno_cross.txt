@@ -6,6 +6,8 @@ strip = '/usr/bin/avr-strip'
 
 [properties]
 variant = 'standard'
+avrdude_speed = '115200'
+avrdude_programmer = 'arduino'
 
 c_args = [
   '-ffunction-sections',

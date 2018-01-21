@@ -12,6 +12,8 @@ project('arduino blink', 'c', 'cpp',
 assert(meson.is_cross_build(), 'Arduino projects can only be built in a cross build environment.')
 
 cross_variant = meson.get_cross_property('variant')
+avrdude_speed = meson.get_cross_property('avrdude_speed')
+avrdude_programmer = meson.get_cross_property('avrdude_programmer')
 
 dependencies = [['arduinocore', 'arduinocore-avr'],
                 ['arduinocore-main', 'arduinocore-avr']]
@@ -36,9 +38,8 @@ stripped = custom_target('stripped',
 avrdude = find_program('avrdude')
 run_target('upload',
   command : [avrdude,
-  '-C/usr/share/arduino/hardware/tools/avrdude.conf',
-  '-v', '-v', '-v', '-v',
-  '-patmega328p', '-carduino', '-P/dev/ttyACM0', '-b115200',
+  '-v',
+  '-p' + target_machine.cpu(), '-P' + get_option('port'),  '-c' + avrdude_programmer, '-b' + avrdude_speed,
   '-D', '-Uflash:w:@0@:e'.format(stripped.full_path())],
   depends : stripped
 )
