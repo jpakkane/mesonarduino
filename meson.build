@@ -1,17 +1,26 @@
 project('arduino blink', 'c', 'cpp',
   default_options : ['buildtype=minsize',
                      'b_lto=true',
+                     'c_std=gnu11',
+                     'cpp_std=gnu++11',
+                     'b_staticpic=false',
                      ],
   )
 
 assert(meson.is_cross_build(), 'Arduino projects can only be built in a cross build environment.')
 
-ardu_src = meson.get_cross_property('ardu_src')
+cross_variant = meson.get_cross_property('variant')
 
-ardulib = static_library('ardu', ardu_src)
+dependencies = [['arduinocore', 'arduinocore-avr'],
+                ['arduinocore-main', 'arduinocore-avr']]
+deps = []
+foreach dep : dependencies
+  deps += dependency('@0@-@1@'.format(dep[0], cross_variant), fallback : [dep[1], dep[0].underscorify() + '_dep'])
+endforeach
+
 
 exe = executable('blink', 'blink.cpp',
-  link_with : ardulib,
+  dependencies : deps,
   link_args : '-lm')
 
 objcopy = find_program('avr-objcopy')
