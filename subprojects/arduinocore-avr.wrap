@@ -1,0 +1,10 @@
+[wrap-file]
+directory = avr
+
+source_url = http://downloads.arduino.cc/cores/avr-1.6.20.tar.bz2
+source_filename = avr-1.6.20.tar.bz2
+source_hash = 61f3d59a2ab2e9191230e91e79ee91c05f32b32c33129d34d76ef87e56d257e1
+
+patch_url = https://wrapdb.mesonbuild.com/v1/projects/arduinocore-avr/1.6.20/1/get_zip
+patch_filename = arduinocore-avr-1.6.20-1-wrap.zip
+patch_hash = 08b6521ce0a7924bad0b24ce51e976c8cde8e6a8ed3cfdd55ad87064ad38f259

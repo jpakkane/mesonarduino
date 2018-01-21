@@ -5,11 +5,9 @@ ar = '/usr/bin/avr-gcc-ar'
 strip = '/usr/bin/avr-strip'
 
 [properties]
-root = '/usr/share/arduino'
+variant = 'standard'
 
 c_args = [
-  '-I/usr/share/arduino/hardware/arduino/variants/standard',
-  '-I/usr/share/arduino/hardware/arduino/cores/arduino',
   '-ffunction-sections',
   '-fdata-sections',
   '-mmcu=atmega328p',
@@ -20,8 +18,7 @@ c_args = [
   '-D__PROG_TYPES_COMPAT__',
   ]
 
-cpp_args = ['-I/usr/share/arduino/hardware/arduino/variants/standard',
-  '-I/usr/share/arduino/hardware/arduino/cores/arduino',
+cpp_args = [
   '-fno-exceptions',
   '-ffunction-sections',
   '-fdata-sections',
@@ -36,27 +33,6 @@ cpp_args = ['-I/usr/share/arduino/hardware/arduino/variants/standard',
 c_link_args = ['-Wl,--gc-sections', '-mmcu=atmega328p']
 cpp_link_args = ['-Wl,--gc-sections', '-mmcu=atmega328p']
 
-ardu_src = [
-  '/usr/share/arduino/hardware/arduino/cores/arduino/wiring_shift.c',
-  '/usr/share/arduino/hardware/arduino/cores/arduino/wiring_analog.c',
-  '/usr/share/arduino/hardware/arduino/cores/arduino/WInterrupts.c',
-  '/usr/share/arduino/hardware/arduino/cores/arduino/avr-libc/realloc.c',
-  '/usr/share/arduino/hardware/arduino/cores/arduino/avr-libc/malloc.c',
-  '/usr/share/arduino/hardware/arduino/cores/arduino/wiring_digital.c',
-  '/usr/share/arduino/hardware/arduino/cores/arduino/wiring_pulse.c',
-  '/usr/share/arduino/hardware/arduino/cores/arduino/wiring.c',
-  '/usr/share/arduino/hardware/arduino/cores/arduino/HID.cpp',
-  '/usr/share/arduino/hardware/arduino/cores/arduino/new.cpp',
-  '/usr/share/arduino/hardware/arduino/cores/arduino/Tone.cpp',
-  '/usr/share/arduino/hardware/arduino/cores/arduino/main.cpp',
-  '/usr/share/arduino/hardware/arduino/cores/arduino/WString.cpp',
-  '/usr/share/arduino/hardware/arduino/cores/arduino/CDC.cpp',
-  '/usr/share/arduino/hardware/arduino/cores/arduino/HardwareSerial.cpp',
-  '/usr/share/arduino/hardware/arduino/cores/arduino/IPAddress.cpp',
-  '/usr/share/arduino/hardware/arduino/cores/arduino/Print.cpp',
-  '/usr/share/arduino/hardware/arduino/cores/arduino/WMath.cpp',
-  '/usr/share/arduino/hardware/arduino/cores/arduino/Stream.cpp',
-  '/usr/share/arduino/hardware/arduino/cores/arduino/USBCore.cpp']
 
 [host_machine]
 system = 'baremetal'
