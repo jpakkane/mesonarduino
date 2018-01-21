@@ -14,6 +14,7 @@ assert(meson.is_cross_build(), 'Arduino projects can only be built in a cross bu
 cross_variant = meson.get_cross_property('variant')
 avrdude_speed = meson.get_cross_property('avrdude_speed')
 avrdude_programmer = meson.get_cross_property('avrdude_programmer')
+requires_reset = meson.get_cross_property('requires_reset', false)
 
 dependencies = [['arduinocore', 'arduinocore-avr'],
                 ['arduinocore-main', 'arduinocore-avr']]
@@ -35,7 +36,11 @@ stripped = custom_target('stripped',
   command: [strip, '@INPUT@', '-o', '@OUTPUT@']
 )
 
-avrdude = find_program('avrdude')
+if requires_reset
+  avrdude = find_program('avrdude-wrapper.sh')
+else
+  avrdude = find_program('avrdude')
+endif
 run_target('upload',
   command : [avrdude,
   '-v',
