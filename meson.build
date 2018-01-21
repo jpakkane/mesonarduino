@@ -1,46 +1,48 @@
 project('arduino blink', 'c', 'cpp',
   default_options : ['buildtype=minsize',
                      'b_lto=true',
+                     'c_std=gnu11',
+                     'cpp_std=gnu++11',
+                     'b_staticpic=false',
                      ],
   )
 
 assert(meson.is_cross_build(), 'Arduino projects can only be built in a cross build environment.')
 
-ardu_src = meson.get_cross_property('ardu_src')
+cross_variant = meson.get_cross_property('variant')
+avrdude_speed = meson.get_cross_property('avrdude_speed')
+avrdude_programmer = meson.get_cross_property('avrdude_programmer')
+requires_reset = meson.get_cross_property('requires_reset', fallback_value : 'false')
 
-ardulib = static_library('ardu', ardu_src)
+dependencies = [['arduinocore', 'arduinocore-avr'],
+                ['arduinocore-main', 'arduinocore-avr']]
+deps = []
+foreach dep : dependencies
+  deps += dependency('@0@-@1@'.format(dep[0], cross_variant), fallback : [dep[1], dep[0].underscorify() + '_dep'])
+endforeach
+
 
 exe = executable('blink', 'blink.cpp',
-  link_with : ardulib,
+  dependencies : deps,
   link_args : '-lm')
 
-objcopy = find_program('avr-objcopy')
-avrdude = find_program('avrdude')
 
-eep = custom_target('blink.eep',
+strip = find_program('avr-strip')
+stripped = custom_target('stripped',
   input : exe,
-  output : 'blink.eep',
-  command : [objcopy, '-O', 'ihex', '-j', '.eeprom',
-    '--set-section-flags=.eeprom=alloc,load',
-    '--no-change-warnings', '--change-section-lma',
-    '.eeprom=0', '@INPUT@', '@OUTPUT@',
-  ]
+  output : 'blink.stripped',
+  command: [strip, '@INPUT@', '-o', '@OUTPUT@']
 )
 
-hex = custom_target('blink.hex',
-  input : exe,
-  output : 'blink.hex',
-  command : [objcopy, '-O', 'ihex', '-R', '.eeprom',
-    '@INPUT@', '@OUTPUT@',
-  ],
-  depends : eep,
-)
-
-run_target('ardup',
+if requires_reset
+  avrdude = find_program('avrdude-wrapper.sh')
+else
+  avrdude = find_program('avrdude')
+endif
+run_target('upload',
   command : [avrdude,
-  '-C/usr/share/arduino/hardware/tools/avrdude.conf',
-  '-v', '-v', '-v', '-v',
-  '-patmega328p', '-carduino', '-P/dev/ttyACM0', '-b115200',
-  '-D', '-Uflash:w:@0@:i'.format(hex.full_path())],
-  depends : hex,
+  '-v',
+  '-p' + target_machine.cpu(), '-P' + get_option('port'),  '-c' + avrdude_programmer, '-b' + avrdude_speed,
+  '-D', '-Uflash:w:@0@:e'.format(stripped.full_path())],
+  depends : stripped
 )

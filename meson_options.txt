@@ -1,0 +1,1 @@
+option('port', type : 'string', value : '/dev/ttyACM0', description : 'The serial port that the Arduino is connected to.')

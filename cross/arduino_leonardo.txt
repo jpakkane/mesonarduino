@@ -1,0 +1,49 @@
+[binaries]
+c = '/usr/bin/avr-gcc'
+cpp = '/usr/bin/avr-g++'
+ar = '/usr/bin/avr-gcc-ar'
+strip = '/usr/bin/avr-strip'
+
+[properties]
+variant = 'leonardo'
+avrdude_speed = '57600'
+avrdude_programmer = 'avr109'
+requires_reset = true
+
+c_args = [
+  '-ffunction-sections',
+  '-fdata-sections',
+  '-mmcu=atmega32u4',
+  '-DF_CPU=16000000L',
+  '-DARDUINO=10805',
+  '-D__PROG_TYPES_COMPAT__',
+  '-DUSB_VID=0x2341',
+  '-DUSB_PID=0x8036',
+  '-DUSB_MANUFACTURER="Unknown"',
+  '-DUSB_PRODUCT="Arduino\ Leonardo"',
+  ]
+
+cpp_args = [
+  '-fno-exceptions',
+  '-ffunction-sections',
+  '-fdata-sections',
+  '-fno-threadsafe-statics',
+  '-mmcu=atmega32u4',
+  '-DF_CPU=16000000L',
+  '-DARDUINO=10805',
+  '-D__PROG_TYPES_COMPAT__',
+  '-DUSB_VID=0x2341',
+  '-DUSB_PID=0x8036',
+  '-DUSB_MANUFACTURER="Unknown"',
+  '-DUSB_PRODUCT=\'"Arduino Leonardo"\'',
+  ]
+
+c_link_args = ['-Wl,--gc-sections', '-mmcu=atmega32u4']
+cpp_link_args = ['-Wl,--gc-sections', '-mmcu=atmega32u4']
+
+
+[host_machine]
+system = 'bare'
+cpu_family = 'atmega'
+cpu = 'atmega32u4'
+endian = 'none'
