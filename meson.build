@@ -23,33 +23,20 @@ exe = executable('blink', 'blink.cpp',
   dependencies : deps,
   link_args : '-lm')
 
-objcopy = find_program('avr-objcopy')
+
+strip = find_program('avr-strip')
+stripped = custom_target('stripped',
+  input : exe,
+  output : 'blink.stripped',
+  command: [strip, '@INPUT@', '-o', '@OUTPUT@']
+)
+
 avrdude = find_program('avrdude')
-
-eep = custom_target('blink.eep',
-  input : exe,
-  output : 'blink.eep',
-  command : [objcopy, '-O', 'ihex', '-j', '.eeprom',
-    '--set-section-flags=.eeprom=alloc,load',
-    '--no-change-warnings', '--change-section-lma',
-    '.eeprom=0', '@INPUT@', '@OUTPUT@',
-  ]
-)
-
-hex = custom_target('blink.hex',
-  input : exe,
-  output : 'blink.hex',
-  command : [objcopy, '-O', 'ihex', '-R', '.eeprom',
-    '@INPUT@', '@OUTPUT@',
-  ],
-  depends : eep,
-)
-
 run_target('upload',
   command : [avrdude,
   '-C/usr/share/arduino/hardware/tools/avrdude.conf',
   '-v', '-v', '-v', '-v',
   '-patmega328p', '-carduino', '-P/dev/ttyACM0', '-b115200',
-  '-D', '-Uflash:w:@0@:i'.format(hex.full_path())],
-  depends : hex,
+  '-D', '-Uflash:w:@0@:e'.format(stripped.full_path())],
+  depends : stripped
 )
