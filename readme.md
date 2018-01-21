@@ -4,7 +4,7 @@ This repository contains the sample blink application for
 Arduino. Compile it with the following commands.
 
     mkdir build
-    meson --cross-file arduino_uno_cross.txt build
+    meson --cross-file cross/arduino_uno.txt build
     cd build
     ninja
 
@@ -23,7 +23,12 @@ you can override the default by setting the meson option 'port', i.e.
 
 # Porting to other Arduino models
 
-This project hardcodes Arduino Uno. If you have a different model,
-change the compiler specifications and flags in the cross file. There
-does not seem to be a way to easily get these programmatically so you
-have to copy them by hand from Arduino IDE invocations.
+This project is currently ported to
+
+    * Arduino Uno
+    * Arduino Leonardo
+
+If you have a different model, add the compiler specifications and
+flags to a new file in the cross/ subdirectory. There does not seem
+to be a way to easily get these programmatically so you have to copy
+them by hand from Arduino IDE invocations.
