@@ -1,6 +1,8 @@
 project('arduino blink', 'c', 'cpp',
   default_options : ['buildtype=minsize',
                      'b_lto=true',
+                     'cpp_rtti=false',
+                     'cpp_eh_=none',
                      ],
   )
 

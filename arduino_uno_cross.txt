@@ -1,7 +1,7 @@
 [binaries]
 c = '/usr/bin/avr-gcc'
 cpp = '/usr/bin/avr-g++'
-ar = '/usr/bin/avr-ar'
+ar = '/usr/bin/avr-gcc-ar'
 strip = '/usr/bin/avr-strip'
 
 [properties]
@@ -59,7 +59,7 @@ ardu_src = [
   '/usr/share/arduino/hardware/arduino/cores/arduino/USBCore.cpp']
 
 [host_machine]
-system = 'bare'
-cpu_family = 'atmega'
+system = 'baremetal'
+cpu_family = 'avr'
 cpu = 'atmega328P'
 endian = 'none'
