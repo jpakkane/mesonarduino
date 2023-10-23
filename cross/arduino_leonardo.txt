@@ -10,6 +10,7 @@ avrdude_speed = '57600'
 avrdude_programmer = 'avr109'
 requires_reset = true
 
+[built-in options]
 c_args = [
   '-ffunction-sections',
   '-fdata-sections',
