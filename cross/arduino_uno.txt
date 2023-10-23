@@ -9,6 +9,7 @@ variant = 'standard'
 avrdude_speed = '115200'
 avrdude_programmer = 'arduino'
 
+[built-in options]
 c_args = [
   '-ffunction-sections',
   '-fdata-sections',
