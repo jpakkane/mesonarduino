@@ -4,7 +4,7 @@ This repository contains the sample blink application for
 Arduino. Compile it with the following commands.
 
     mkdir build
-    meson --cross-file cross/arduino_uno.txt build
+    meson setup --cross-file cross/arduino_uno.txt build
     cd build
     ninja
 
