@@ -47,4 +47,4 @@ cpp_link_args = ['-Wl,--gc-sections', '-mmcu=atmega32u4']
 system = 'baremetal'
 cpu_family = 'avr'
 cpu = 'atmega32u4'
-endian = 'none'
+endian = 'little'
