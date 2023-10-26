@@ -23,8 +23,15 @@ foreach dep : dependencies
   deps += dependency('@0@-@1@'.format(dep[0], cross_variant), fallback : [dep[1], dep[0].underscorify() + '_dep'])
 endforeach
 
+blink_cpp = custom_target(
+  'blink.cpp',
+  input: 'blink.ino',
+  output: 'blink.cpp',
+  command: [ 'ino-to-cpp.sh', '@INPUT@' ],
+  capture: true
+)
 
-exe = executable('blink', 'blink.cpp',
+exe = executable('blink', blink_cpp,
   dependencies : deps,
   link_args : '-lm')
 
