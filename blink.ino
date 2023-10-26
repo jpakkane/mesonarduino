@@ -5,8 +5,6 @@
  * This example code is in the public domain.
  */
 
-#include<Arduino.h>
-
 // Pin 13 has an LED connected on most Arduino boards, except
 // on the Sparkfun Pro Micro where we need to use the RX LED instead.
 // give it a name:
