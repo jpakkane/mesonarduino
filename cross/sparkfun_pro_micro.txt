@@ -1,0 +1,47 @@
+[binaries]
+c = '/usr/bin/avr-gcc'
+cpp = '/usr/bin/avr-g++'
+ar = '/usr/bin/avr-gcc-ar'
+strip = '/usr/bin/avr-strip'
+
+[properties]
+variant = 'standard'
+avrdude_speed = '57600'
+avrdude_programmer = 'avr109'
+requires_reset = true
+
+[built-in options]
+c_args = [
+  '-ffunction-sections',
+  '-fdata-sections',
+  '-mmcu=atmega32u4',
+  '-DF_CPU=16000000L',
+  '-DUSB_VID=0x1b4f',
+  '-DUSB_PID=0x9204',
+  '-DARDUINO=10812',
+  '-D__PROG_TYPES_COMPAT__',
+  '-DHAVE_PRO_MICRO',
+  ]
+
+cpp_args = [
+  '-fno-exceptions',
+  '-ffunction-sections',
+  '-fdata-sections',
+  '-mmcu=atmega32u4',
+  '-DF_CPU=16000000L',
+  '-DUSB_VID=0x1b4f',
+  '-DUSB_PID=0x9204',
+  '-DARDUINO=105',
+  '-D__PROG_TYPES_COMPAT__',
+  '-DHAVE_PRO_MICRO',
+  ]
+
+c_link_args = ['-Wl,--gc-sections', '-mmcu=atmega32u4']
+cpp_link_args = ['-Wl,--gc-sections', '-mmcu=atmega32u4']
+
+
+[host_machine]
+system = 'baremetal'
+cpu_family = 'avr'
+cpu = 'atmega32u4'
+endian = 'little'
