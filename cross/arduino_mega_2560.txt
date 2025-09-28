@@ -1,0 +1,48 @@
+[binaries]
+c = '/usr/bin/avr-gcc'
+cpp = '/usr/bin/avr-g++'
+ar = '/usr/bin/avr-gcc-ar'
+strip = '/usr/bin/avr-strip'
+
+[properties]
+variant = 'standard'
+avrdude_speed = '115200'
+avrdude_programmer = 'wiring'
+
+[built-in options]
+c_args = [
+  '-ffunction-sections',
+  '-fdata-sections',
+  '-mmcu=atmega2560',
+  '-DF_CPU=16000000L',
+  '-DUSB_VID=0x2341',
+  '-DUSB_PID=0x0010',
+  '-DARDUINO=10819',
+  '-DARDUINO_ARCH_AVR',
+  '-DARDUINO_AVR_MEGA2560',
+  '-D__PROG_TYPES_COMPAT__',
+  ]
+
+cpp_args = [
+  '-fno-exceptions',
+  '-ffunction-sections',
+  '-fdata-sections',
+  '-mmcu=atmega2560',
+  '-DF_CPU=16000000L',
+  '-DUSB_VID=0x2341',
+  '-DUSB_PID=0x0010',
+  '-DARDUINO=10819',
+  '-DARDUINO_ARCH_AVR',
+  '-DARDUINO_AVR_MEGA2560',
+  '-D__PROG_TYPES_COMPAT__',
+  ]
+
+c_link_args = ['-Wl,--gc-sections', '-mmcu=atmega2560']
+cpp_link_args = ['-Wl,--gc-sections', '-mmcu=atmega2560']
+
+
+[host_machine]
+system = 'baremetal'
+cpu_family = 'avr'
+cpu = 'atmega2560'
+endian = 'little'

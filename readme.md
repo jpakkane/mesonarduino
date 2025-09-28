@@ -26,6 +26,7 @@ you can override the default by setting the meson option 'port', i.e.
 This project is currently ported to
 
     * Arduino Leonardo
+    * Arduino Mega 2560
     * Arduino Micro
     * Arduino Uno
     * SparkFun Pro Micro
