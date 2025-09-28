@@ -25,8 +25,10 @@ you can override the default by setting the meson option 'port', i.e.
 
 This project is currently ported to
 
-    * Arduino Uno
     * Arduino Leonardo
+    * Arduino Micro
+    * Arduino Uno
+    * SparkFun Pro Micro
 
 If you have a different model, add the compiler specifications and
 flags to a new file in the cross/ subdirectory. There does not seem
