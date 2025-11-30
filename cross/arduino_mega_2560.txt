@@ -5,7 +5,7 @@ ar = '/usr/bin/avr-gcc-ar'
 strip = '/usr/bin/avr-strip'
 
 [properties]
-variant = 'standard'
+variant = 'mega'
 avrdude_speed = '115200'
 avrdude_programmer = 'wiring'
 
