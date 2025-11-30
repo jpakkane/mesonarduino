@@ -7,14 +7,15 @@ project('arduino blink', 'c', 'cpp',
                      'cpp_std=gnu++11',
                      'b_staticpic=false',
                      ],
+  meson_version : '>=0.54.0',
   )
 
 assert(meson.is_cross_build(), 'Arduino projects can only be built in a cross build environment.')
 
-cross_variant = meson.get_cross_property('variant')
-avrdude_speed = meson.get_cross_property('avrdude_speed')
-avrdude_programmer = meson.get_cross_property('avrdude_programmer')
-requires_reset = meson.get_cross_property('requires_reset', false)
+cross_variant = meson.get_external_property('variant')
+avrdude_speed = meson.get_external_property('avrdude_speed')
+avrdude_programmer = meson.get_external_property('avrdude_programmer')
+requires_reset = meson.get_external_property('requires_reset', false)
 
 dependencies = [['arduinocore', 'arduinocore-avr'],
                 ['arduinocore-main', 'arduinocore-avr']]
