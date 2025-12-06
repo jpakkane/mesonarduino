@@ -17,11 +17,10 @@ avrdude_speed = meson.get_external_property('avrdude_speed')
 avrdude_programmer = meson.get_external_property('avrdude_programmer')
 requires_reset = meson.get_external_property('requires_reset', false)
 
-dependencies = [['arduinocore', 'arduinocore-avr'],
-                ['arduinocore-main', 'arduinocore-avr']]
+dependencies = ['arduinocore', 'arduinocore-main']
 deps = []
 foreach dep : dependencies
-  deps += dependency('@0@-@1@'.format(dep[0], cross_variant), fallback : [dep[1], dep[0].underscorify() + '_dep'])
+  deps += dependency(dep)
 endforeach
 
 blink_cpp = custom_target(
