@@ -28,7 +28,7 @@ blink_cpp = custom_target(
   'blink.cpp',
   input: 'blink.ino',
   output: 'blink.cpp',
-  command: [ 'ino-to-cpp.sh', '@INPUT@' ],
+  command: [ 'tools/ino-to-cpp.sh', '@INPUT@' ],
   capture: true
 )
 
@@ -45,7 +45,7 @@ stripped = custom_target('stripped',
 )
 
 if requires_reset
-  avrdude = find_program('avrdude-wrapper.sh')
+  avrdude = find_program('tools/avrdude-wrapper.sh')
 else
   avrdude = find_program('avrdude')
 endif
