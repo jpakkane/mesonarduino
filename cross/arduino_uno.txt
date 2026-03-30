@@ -18,7 +18,6 @@ c_args = [
   '-DUSB_VID=null',
   '-DUSB_PID=null',
   '-DARDUINO=105',
-  '-D__PROG_TYPES_COMPAT__',
   ]
 
 cpp_args = [
@@ -30,7 +29,6 @@ cpp_args = [
   '-DUSB_VID=null',
   '-DUSB_PID=null',
   '-DARDUINO=105',
-  '-D__PROG_TYPES_COMPAT__',
   ]
 
 c_link_args = ['-Wl,--gc-sections', '-mmcu=atmega328p']

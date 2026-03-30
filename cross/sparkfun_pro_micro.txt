@@ -19,7 +19,6 @@ c_args = [
   '-DUSB_VID=0x1b4f',
   '-DUSB_PID=0x9204',
   '-DARDUINO=10812',
-  '-D__PROG_TYPES_COMPAT__',
   '-DHAVE_PRO_MICRO',
   ]
 
@@ -32,7 +31,6 @@ cpp_args = [
   '-DUSB_VID=0x1b4f',
   '-DUSB_PID=0x9204',
   '-DARDUINO=105',
-  '-D__PROG_TYPES_COMPAT__',
   '-DHAVE_PRO_MICRO',
   ]
 
