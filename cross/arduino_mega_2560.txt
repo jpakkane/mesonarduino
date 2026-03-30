@@ -20,7 +20,6 @@ c_args = [
   '-DARDUINO=10819',
   '-DARDUINO_ARCH_AVR',
   '-DARDUINO_AVR_MEGA2560',
-  '-D__PROG_TYPES_COMPAT__',
   ]
 
 cpp_args = [
@@ -34,7 +33,6 @@ cpp_args = [
   '-DARDUINO=10819',
   '-DARDUINO_ARCH_AVR',
   '-DARDUINO_AVR_MEGA2560',
-  '-D__PROG_TYPES_COMPAT__',
   ]
 
 c_link_args = ['-Wl,--gc-sections', '-mmcu=atmega2560']
