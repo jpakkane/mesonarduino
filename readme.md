@@ -19,7 +19,7 @@ By default, 'ninja upload' will assume that your Arduino is connected
 as '/dev/ttyACM0'. If your Arduino shows up as a different device,
 you can override the default by setting the meson option 'port', i.e.
 
-    meson --cross-file arduino_uno_cross.txt -Dport=/dev/arduino build
+    meson --cross-file cross/arduino_uno.txt -Dport=/dev/arduino build
 
 # Porting to other Arduino models
 
