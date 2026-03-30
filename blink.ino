@@ -8,10 +8,10 @@
 // Pin 13 has an LED connected on most Arduino boards, except
 // on the Sparkfun Pro Micro where we need to use the RX LED instead.
 // give it a name:
-#ifndef HAVE_PRO_MICRO
-int led = 13;
+#ifdef HAVE_PRO_MICRO
+int led = LED_BUILTIN_RX;
 #else
-int led = 17;
+int led = LED_BUILTIN;
 #endif
 
 // the setup routine runs once when you press reset:
