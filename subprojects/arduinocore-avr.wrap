@@ -1,14 +1,14 @@
 [wrap-file]
-directory = avr-1.8.6
-source_url = https://downloads.arduino.cc/cores/staging/avr-1.8.6.tar.bz2
-source_filename = avr-1.8.6.tar.bz2
-source_hash = ff1d17274b5a952f172074bd36c3924336baefded0232e10982f8999c2f7c3b6
-source_fallback_url = https://wrapdb.mesonbuild.com/v2/arduinocore-avr_1.8.6-1/get_source/avr-1.8.6.tar.bz2
-patch_filename = arduinocore-avr_1.8.6-1_patch.zip
-patch_url = https://wrapdb.mesonbuild.com/v2/arduinocore-avr_1.8.6-1/get_patch
-patch_fallback_url = https://github.com/mesonbuild/wrapdb/releases/download/arduinocore-avr_1.8.6-1/arduinocore-avr_1.8.6-1_patch.zip
-patch_hash = 2685b0c6b57cef1f85ef7541246134c8fd8f018adc4144024df94407b654ec19
-wrapdb_version = 1.8.6-1
+directory = ArduinoCore-avr-1.8.7
+source_url = https://downloads.arduino.cc/cores/staging/avr-1.8.7.tar.bz2
+source_filename = avr-1.8.7.tar.bz2
+source_hash = 6ae7000b1b6c004c4a208d6d924a8046b417580e4a10cfd3f88930b6660a51db
+source_fallback_url = https://wrapdb.mesonbuild.com/v2/arduinocore-avr_1.8.7-1/get_source/avr-1.8.7.tar.bz2
+patch_filename = arduinocore-avr_1.8.7-1_patch.zip
+patch_url = https://wrapdb.mesonbuild.com/v2/arduinocore-avr_1.8.7-1/get_patch
+patch_fallback_url = https://github.com/mesonbuild/wrapdb/releases/download/arduinocore-avr_1.8.7-1/arduinocore-avr_1.8.7-1_patch.zip
+patch_hash = c1c4d1d077090c6e87ac73180476d9d4d7de4bfdd6236fd53e2c33ea9ce8622f
+wrapdb_version = 1.8.7-1
 
 [provide]
 dependency_names = arduinocore, arduinocore-main, arduinocore-eeprom, arduinocore-hid, arduinocore-softwareserial, arduinocore-spi, arduinocore-wire
