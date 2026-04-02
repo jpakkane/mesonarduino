@@ -21,6 +21,18 @@ you can override the default by setting the meson option 'port', i.e.
 
     meson --cross-file cross/arduino_uno.txt -Dport=/dev/arduino build
 
+# Arduino AVR Core
+
+The Arduino AVR core is built as a subproject using the Meson WrapDB
+arduinocore-avr package.
+
+The blink application uses the 'arduinocore' and 'arduinocore-main'
+dependencies from the Arduino core.
+
+The package also includes the EEPROM, HID, SoftwareSerial, SPI
+and Wire libraries. For example, to use EEPROM in an application add
+a dependency on 'arduinocore-eeprom'.
+
 # Porting to other Arduino models
 
 This project is currently ported to
