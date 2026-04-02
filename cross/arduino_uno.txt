@@ -15,8 +15,6 @@ c_args = [
   '-fdata-sections',
   '-mmcu=atmega328p',
   '-DF_CPU=16000000L',
-  '-DUSB_VID=null',
-  '-DUSB_PID=null',
   '-DARDUINO=105',
   ]
 
@@ -26,8 +24,6 @@ cpp_args = [
   '-fdata-sections',
   '-mmcu=atmega328p',
   '-DF_CPU=16000000L',
-  '-DUSB_VID=null',
-  '-DUSB_PID=null',
   '-DARDUINO=105',
   ]
 
